@@ -25,7 +25,22 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _userChoice = choice;
       _computerChoice = Choice.values[Random().nextInt(3)];
+      _result = _getWinner();
     });
+  }
+
+  // determine winner
+  String _getWinner() {
+    if (_userChoice == _computerChoice) {
+      return 'Tie';
+    } else if ((_userChoice == Choice.rock &&
+            _computerChoice == Choice.scissors) ||
+        (_userChoice == Choice.scissors && _computerChoice == Choice.paper) ||
+        (_userChoice == Choice.paper && _computerChoice == Choice.rock)) {
+      return 'You Win';
+    } else {
+      return 'Computer Win';
+    }
   }
 
   @override
