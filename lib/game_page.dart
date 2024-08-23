@@ -20,6 +20,8 @@ class _GamePageState extends State<GamePage> {
   Choice? _userChoice;
   Choice? _computerChoice;
   String _result = '';
+  int _userScore = 0;
+  int _computerScore = 0;
 
   // make choice
   void _makeChoice(Choice choice) {
@@ -28,6 +30,7 @@ class _GamePageState extends State<GamePage> {
       _computerChoice = Choice.values[Random().nextInt(3)];
       _result = _getWinner();
       _resultColors = resultColor();
+      _setScores();
     });
   }
 
@@ -43,6 +46,19 @@ class _GamePageState extends State<GamePage> {
     } else {
       return 'Computer Win';
     }
+  }
+
+  // keep scores
+  void _setScores() {
+    setState(() {
+      if (_result == 'Tie') {
+        return null;
+      } else if (_result == 'Computer Win') {
+        _computerScore++;
+      } else {
+        _userScore++;
+      }
+    });
   }
 
   Color _resultColors = Colors.transparent;
@@ -68,6 +84,50 @@ class _GamePageState extends State<GamePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Scores
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(10)),
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // User score
+                  Row(
+                    children: [
+                      const Text(
+                        'You - ',
+                        style: TextStyle(fontSize: 15, letterSpacing: 1),
+                      ),
+                      // const SizedBox(width: 20),
+                      Text(
+                        '$_userScore',
+                        style: const TextStyle(fontSize: 18),
+                      )
+                    ],
+                  ),
+                  // Computer score
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '$_computerScore',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      // const SizedBox(width: 20),
+                      const Text(
+                        ' - Computer',
+                        style: TextStyle(fontSize: 15, letterSpacing: 1),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 50),
+
             // Computer choice
             Column(
               children: [
@@ -83,7 +143,7 @@ class _GamePageState extends State<GamePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
 
             // result
             Container(
@@ -101,7 +161,7 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
 
             // User choice
             Column(
