@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:rock_paper_scissors/components/game_button.dart';
+import 'package:rock_paper_scissors/components/choice_button.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
@@ -52,7 +52,7 @@ class _GamePageState extends State<GamePage> {
   void _setScores() {
     setState(() {
       if (_result == 'Tie') {
-        return null;
+        return;
       } else if (_result == 'Computer Win') {
         _computerScore++;
       } else {
@@ -177,22 +177,27 @@ class _GamePageState extends State<GamePage> {
                   style: const TextStyle(fontSize: 22, letterSpacing: 1),
                 ),
 
-                const SizedBox(height: 100),
+                // const SizedBox(height: 100),
                 // User choice buttons
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GameButton(
-                      title: 'Rock',
-                      onTap: () => _makeChoice(Choice.rock),
+                    ChoiceButton(
+                      imagePath: 'assets/images/scissor.png',
+                      color: Colors.red,
+                      onTap: () => _makeChoice(Choice.scissors),
                     ),
-                    GameButton(
-                      title: 'Paper',
+                    const SizedBox(width: 10),
+                    ChoiceButton(
+                      imagePath: 'assets/images/paper.png',
+                      color: Colors.yellow,
                       onTap: () => _makeChoice(Choice.paper),
                     ),
-                    GameButton(
-                      title: 'Scissors',
-                      onTap: () => _makeChoice(Choice.scissors),
+                    const SizedBox(width: 10),
+                    ChoiceButton(
+                      imagePath: 'assets/images/rock.png',
+                      color: Colors.blue,
+                      onTap: () => _makeChoice(Choice.rock),
                     ),
                   ],
                 ),
