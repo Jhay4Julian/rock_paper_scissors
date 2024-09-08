@@ -19,6 +19,8 @@ enum Choice {
 class _GamePageState extends State<GamePage> {
   Choice? _userChoice;
   Choice? _computerChoice;
+  String _userImage = '';
+  String _computerImage = '';
   String _result = '';
   int _userScore = 0;
   int _computerScore = 0;
@@ -28,6 +30,8 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _userChoice = choice;
       _computerChoice = Choice.values[Random().nextInt(3)];
+      _userImage = _getUserImage();
+      _computerImage = _getComputerImage();
       _result = _getWinner();
       _resultColors = resultColor();
       _setScores();
