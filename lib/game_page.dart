@@ -168,12 +168,11 @@ class _GamePageState extends State<GamePage> {
                   'Computer:',
                   style: TextStyle(fontSize: 20),
                 ),
-                Text(
-                  _computerChoice != null
-                      ? _computerChoice.toString().toUpperCase().split('.').last
-                      : 'Waiting...',
-                  style: const TextStyle(fontSize: 22, letterSpacing: 1),
-                ),
+                _computerChoice != null
+                    ? CircleAvatar(
+                        radius: 50,
+                        child: Image(image: AssetImage(_computerImage)))
+                    : const SizedBox.shrink(),
               ],
             ),
             const SizedBox(height: 40),
@@ -203,14 +202,11 @@ class _GamePageState extends State<GamePage> {
                   'You:',
                   style: TextStyle(fontSize: 20),
                 ),
-                Text(
-                  _userChoice != null
-                      ? _userChoice.toString().toUpperCase().split('.').last
-                      : 'Choose your move',
-                  style: const TextStyle(fontSize: 22, letterSpacing: 1),
-                ),
+                _userChoice != null
+                    ? CircleAvatar(
+                        radius: 50, child: Image(image: AssetImage(_userImage)))
+                    : const SizedBox.shrink(),
 
-                // const SizedBox(height: 100),
                 // User choice buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
