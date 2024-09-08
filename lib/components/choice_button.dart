@@ -17,11 +17,12 @@ class ChoiceButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       child: Center(
         child: MaterialButton(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(12),
+          shape: const CircleBorder(),
           color: color,
           onPressed: onTap,
           child: CircleAvatar(
-            radius: 35,
+            radius: 30,
             backgroundImage: AssetImage(imagePath),
           ),
         ),
