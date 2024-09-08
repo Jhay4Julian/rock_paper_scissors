@@ -45,6 +45,28 @@ class _GamePageState extends State<GamePage> {
     'assets/images/scissor.png',
   ];
 
+  // get user choice image
+  String _getUserImage() {
+    if (_userChoice == Choice.rock) {
+      return imageList[0];
+    } else if (_userChoice == Choice.paper) {
+      return imageList[1];
+    } else {
+      return imageList[2];
+    }
+  }
+
+  // get computer choice image
+  String _getComputerImage() {
+    if (_computerChoice == Choice.rock) {
+      return imageList[0];
+    } else if (_computerChoice == Choice.paper) {
+      return imageList[1];
+    } else {
+      return imageList[2];
+    }
+  }
+
   // determine winner
   String _getWinner() {
     if (_userChoice == _computerChoice) {
