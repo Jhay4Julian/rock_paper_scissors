@@ -38,6 +38,13 @@ class _GamePageState extends State<GamePage> {
     });
   }
 
+  // List of choice images
+  List<String> imageList = [
+    'assets/images/rock.png',
+    'assets/images/paper.png',
+    'assets/images/scissor.png',
+  ];
+
   // determine winner
   String _getWinner() {
     if (_userChoice == _computerChoice) {
