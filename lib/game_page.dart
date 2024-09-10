@@ -201,39 +201,66 @@ class _GamePageState extends State<GamePage> {
 
             const SizedBox(height: 12),
             // Computer choice
-            Column(
-              children: [
-                const Text(
-                  'CPU',
-                  style: TextStyle(fontSize: 20),
-                ),
-                _computerChoice != null
-                    ? CircleAvatar(
-                        radius: 70,
-                        child: Transform.rotate(
-                            angle: 60,
-                            child: Image(image: AssetImage(_computerImage))))
-                    : const SizedBox(height: 50),
-              ],
-            ),
+            _computerChoice != null
+                ? Column(
+                    children: [
+                      const Text(
+                        'CPU',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      CircleAvatar(
+                          radius: 70,
+                          child: Transform.rotate(
+                              angle: 60,
+                              child: Image(image: AssetImage(_computerImage))))
+                    ],
+                  )
+                : const SizedBox(height: 50),
 
             const Spacer(),
+
+            _userChoice != null
+                ? const SizedBox.shrink()
+                : const Column(
+                    children: [
+                      Text(
+                        'ROCK',
+                        style: TextStyle(fontSize: 20, letterSpacing: 1),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        'PAPER',
+                        style: TextStyle(fontSize: 30, letterSpacing: 1.5),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'SCISSOR',
+                        style: TextStyle(fontSize: 40, letterSpacing: 2),
+                      ),
+                      SizedBox(height: 6),
+                      Text(
+                        'SHOOT!',
+                        style: TextStyle(fontSize: 50, letterSpacing: 7),
+                      ),
+                    ],
+                  ),
 
             const Spacer(),
 
             // User choice
-            Column(
-              children: [
-                _userChoice != null
-                    ? CircleAvatar(
-                        radius: 70, child: Image(image: AssetImage(_userImage)))
-                    : const SizedBox.shrink(),
-                const Text(
-                  'You',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
-            ),
+            _userChoice != null
+                ? Column(
+                    children: [
+                      CircleAvatar(
+                          radius: 70,
+                          child: Image(image: AssetImage(_userImage))),
+                      const Text(
+                        'You',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
+                : const SizedBox.shrink(),
             const SizedBox(height: 20),
 
             // User choice buttons
